@@ -930,14 +930,11 @@
         background: var(--surface);
       }
       .contact-inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
+        display: block;
       }
       .contact-cards {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 16px;
       }
       .contact-item {
@@ -1104,8 +1101,8 @@
         .contact-inner {
           grid-template-columns: 1fr;
         }
-        .contact-avatar-wrap {
-          display: none;
+        .contact-cards {
+          grid-template-columns: 1fr;
         }
       }
       @media (max-width: 600px) {
@@ -1165,7 +1162,7 @@
           <h1 class="hero-name">Kishan<br />Maurya</h1>
           <p class="hero-sub">
             Software Engineer (Backend) · Node.js · Golang · TypeScript · AWS ·
-            Docker · Terraform · Microservices · Systems Design 
+            Docker · Terraform · Microservices · Systems Design
           </p>
           <div class="hero-cta">
             <a href="#contact" class="btn btn-primary">Get in Touch</a>
@@ -1268,7 +1265,9 @@
           </div>
           <div class="skill-item">
             <div class="skill-top">
-              <span class="skill-name">AWS (API-Gateway, Lambda, DynamoDB, S3, SQS, SSM, ECS, IAM, CloudFront)</span
+              <span class="skill-name"
+                >AWS (API-Gateway, Lambda, DynamoDB, S3, SQS, SSM, ECS, IAM,
+                CloudFront)</span
               ><span class="skill-pct">88%</span>
             </div>
             <div class="skill-bar">
@@ -1287,7 +1286,8 @@
           </div>
           <div class="skill-item">
             <div class="skill-top">
-              <span class="skill-name">Microservices Architecture / System Design / API Design</span
+              <span class="skill-name"
+                >Microservices Architecture / System Design / API Design</span
               ><span class="skill-pct">90%</span>
             </div>
             <div class="skill-bar">
@@ -1353,7 +1353,8 @@
           </div>
           <div class="skill-item">
             <div class="skill-top">
-              <span class="skill-name">Payment Gateways (Adyen, Worldpay, Paypal, Stripe)</span
+              <span class="skill-name"
+                >Payment Gateways (Adyen, Worldpay, Paypal, Stripe)</span
               ><span class="skill-pct">88%</span>
             </div>
             <div class="skill-bar">
@@ -1372,7 +1373,8 @@
           </div>
           <div class="skill-item">
             <div class="skill-top">
-              <span class="skill-name">Jest / TDD / Testing / Code Coverage</span
+              <span class="skill-name"
+                >Jest / TDD / Testing / Code Coverage</span
               ><span class="skill-pct">86%</span>
             </div>
             <div class="skill-bar">
@@ -1414,10 +1416,10 @@
         ><span class="chip">Redis</span> <span class="chip">Bull Queue</span
         ><span class="chip">AWS Lambda</span
         ><span class="chip">API Gateway</span> <span class="chip">DynamoDB</span
-        ><span class="chip">S3</span><span class="chip">EC2</span><span class="chip">ECS</span>
-        <span class="chip">SNS</span><span class="chip">SQS</span
-        ><span class="chip">CloudWatch</span> <span class="chip">Terraform</span
-        ><span class="chip">Docker</span
+        ><span class="chip">S3</span><span class="chip">EC2</span
+        ><span class="chip">ECS</span> <span class="chip">SNS</span
+        ><span class="chip">SQS</span><span class="chip">CloudWatch</span>
+        <span class="chip">Terraform</span><span class="chip">Docker</span
         ><span class="chip">GitHub Actions</span>
         <span class="chip">New Relic</span><span class="chip">Grafana</span
         ><span class="chip">Coralogix</span> <span class="chip">Adyen</span
@@ -1745,7 +1747,47 @@
             </div>
             <div>
               <div class="contact-label">LinkedIn</div>
-              <div class="contact-value">linkedin.com/in/kishanmaurya</div>
+              <div class="contact-value">
+                <a
+                  href="https://www.linkedin.com/in/kishanmaurya/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    color: var(--text);
+                    text-decoration: none;
+                    font-family: &quot;DM Sans&quot;, sans-serif;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                  "
+                  >linkedin.com/in/kishanmaurya</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div
+              class="contact-icon"
+              style="background: rgba(255, 255, 255, 0.08)"
+            >
+              🐙
+            </div>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">
+                <a
+                  href="https://github.com/KishanMaurya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    color: var(--text);
+                    text-decoration: none;
+                    font-family: &quot;DM Sans&quot;, sans-serif;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                  "
+                  >github.com/KishanMaurya</a
+                >
+              </div>
             </div>
           </div>
           <div class="contact-item">
@@ -1760,12 +1802,6 @@
               <div class="contact-value">Available for Opportunities</div>
             </div>
           </div>
-        </div>
-        <div class="contact-avatar-wrap">
-          <div class="ripple"></div>
-          <div class="ripple"></div>
-          <div class="ripple"></div>
-          <div class="contact-avatar">KM</div>
         </div>
       </div>
     </section>
