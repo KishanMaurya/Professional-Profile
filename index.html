@@ -836,6 +836,20 @@
         flex-wrap: wrap;
         gap: 6px;
       }
+      .proj-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 16px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--cyan);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .proj-link:hover {
+        color: var(--pink);
+      }
       .stack-tag {
         padding: 3px 10px;
         border-radius: 20px;
@@ -1180,7 +1194,7 @@
             <div class="card-company">@ DAZN · Hyderabad</div>
             <div class="card-stats">
               <div class="stat">
-                <div class="stat-num">4.8+</div>
+                <div class="stat-num">5+</div>
                 <div class="stat-label">Yrs Exp</div>
               </div>
               <div class="stat">
@@ -1544,6 +1558,55 @@
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Featured <span>Projects</span></h2>
       <div class="projects-grid">
+        <div class="proj-card">
+          <div class="proj-emoji">💰</div>
+          <div class="proj-name">Braintree PayPal Payment Integration</div>
+          <div class="proj-desc">
+            Designed and built a Braintree PayPal integration for DAZN's
+            payments platform, covering vaulting, recurring charges, refunds,
+            reconciliation, and stored-payment-method management across
+            200+ countries with currency-aware amount formatting.
+          </div>
+          <div class="proj-stack">
+            <span class="stack-tag">NestJS</span
+            ><span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">GraphQL</span
+            ><span class="stack-tag">Braintree</span>
+            <span class="stack-tag">PayPal</span
+            ><span class="stack-tag">DynamoDB</span>
+            <span class="stack-tag">Jest</span
+            ><span class="stack-tag">Unit-of-Work</span>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-emoji">🎬</div>
+          <div class="proj-name">AutoClipr — AI Video Clipping SaaS</div>
+          <div class="proj-desc">
+            Independent SaaS product that turns long-form videos into viral
+            short clips — AI-driven hook detection, auto-generated captions,
+            9:16 exports, and one-click publishing to YouTube & Instagram,
+            backed by subscription credits.
+          </div>
+          <a
+            class="proj-link"
+            href="https://autoclipr.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            >🔗 autoclipr.ai</a
+          >
+          <div class="proj-stack">
+            <span class="stack-tag">Next.js</span
+            ><span class="stack-tag">NestJS</span>
+            <span class="stack-tag">TypeScript</span
+            ><span class="stack-tag">BullMQ</span>
+            <span class="stack-tag">Redis</span
+            ><span class="stack-tag">Supabase</span>
+            <span class="stack-tag">FFmpeg</span
+            ><span class="stack-tag">Whisper</span>
+          </div>
+        </div>
+
         <div class="proj-card">
           <div class="proj-emoji">🛒</div>
           <div class="proj-name">Checkout & Order Orchestrator Service</div>
