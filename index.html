@@ -242,6 +242,69 @@
       .nav-links a:hover::after {
         width: 100%;
       }
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 32px;
+        height: 32px;
+        background: none;
+        border: none;
+        cursor: none;
+        padding: 0;
+        z-index: 1001;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+      .nav-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      @media (max-width: 700px) {
+        .nav-toggle {
+          display: flex;
+        }
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+          background: rgba(7, 8, 15, 0.97);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--border);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.35s ease;
+        }
+        .nav-links.open {
+          max-height: 400px;
+        }
+        .nav-links li {
+          width: 100%;
+          text-align: center;
+        }
+        .nav-links a {
+          display: block;
+          padding: 18px 5%;
+        }
+      }
 
       /* ─── SECTIONS ─────────────────────────────────────────────── */
       section {
@@ -1159,13 +1222,24 @@
     <!-- NAV -->
     <nav>
       <a href="#hero" class="nav-logo">Kishan Maurya</a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
 
     <!-- HERO -->
@@ -1879,6 +1953,22 @@
 
     <!-- ─── JAVASCRIPT ─────────────────────────────────────────────── -->
     <script>
+      /* NAV TOGGLE (mobile) */
+      const navToggle = document.getElementById("nav-toggle");
+      const navLinks = document.getElementById("nav-links");
+      navToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        navToggle.classList.toggle("open", isOpen);
+        navToggle.setAttribute("aria-expanded", isOpen);
+      });
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          navToggle.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
       /* LOADER */
       window.addEventListener("load", () => {
         setTimeout(() => {
