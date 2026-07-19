@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kishan Maurya — Backend Engineer</title>
+    <meta
+      name="description"
+      content="Kishan Maurya — Backend Software Engineer specializing in Node.js, NestJS, TypeScript, AWS, and payment systems (Adyen, Worldpay, Braintree). 5+ years building microservices at DAZN."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kishan Maurya — Backend Engineer" />
+    <meta
+      property="og:description"
+      content="Backend Software Engineer specializing in Node.js, NestJS, TypeScript, AWS, and payment systems. 5+ years building microservices at DAZN."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Kishan Maurya — Backend Engineer" />
+    <meta
+      name="twitter:description"
+      content="Backend Software Engineer specializing in Node.js, NestJS, TypeScript, AWS, and payment systems."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%23f72585'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2307080f'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='800' font-size='26' fill='url(%23g)' text-anchor='middle'%3EKM%3C/text%3E%3C/svg%3E"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -98,6 +119,40 @@
           opacity 0.25s;
         opacity: 0.7;
       }
+      /* Custom cursor only where a fine pointer (real mouse) is present */
+      @media not all and (hover: hover) and (pointer: fine) {
+        body,
+        .btn,
+        .nav-toggle {
+          cursor: auto;
+        }
+        #cursor-dot,
+        #cursor-ring {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #cursor-dot,
+        #cursor-ring {
+          display: none;
+        }
+        body {
+          cursor: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      /* Keyboard focus visibility (cursor:none hides the native ring, so this fills the gap) */
+      :focus-visible {
+        outline: 2px solid var(--cyan);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
 
       /* ─── LOADER ─────────────────────────────────────────────── */
       #loader {
@@ -132,7 +187,7 @@
         background-size: 300% 300%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: gradientShift 2s ease infinite;
+        animation: gradientShift 0.9s ease infinite;
         letter-spacing: -2px;
       }
       .loader-bar-wrap {
@@ -152,7 +207,7 @@
           var(--pink),
           var(--cyan)
         );
-        animation: loadFill 2s ease forwards;
+        animation: loadFill 0.9s ease forwards;
       }
       @keyframes loadFill {
         to {
@@ -1973,46 +2028,51 @@
       window.addEventListener("load", () => {
         setTimeout(() => {
           document.getElementById("loader").classList.add("hidden");
-        }, 2100);
+        }, 950);
       });
 
-      /* CURSOR */
-      const dot = document.getElementById("cursor-dot");
-      const ring = document.getElementById("cursor-ring");
-      let mx = 0,
-        my = 0,
-        rx = 0,
-        ry = 0;
-      document.addEventListener("mousemove", (e) => {
-        mx = e.clientX;
-        my = e.clientY;
-      });
-      function animCursor() {
-        dot.style.left = mx + "px";
-        dot.style.top = my + "px";
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        ring.style.left = rx + "px";
-        ring.style.top = ry + "px";
-        requestAnimationFrame(animCursor);
-      }
-      animCursor();
-      document
-        .querySelectorAll(
-          "a,button,.btn,.chip,.proj-card,.job-card,.contact-item",
-        )
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () => {
-            ring.style.width = "56px";
-            ring.style.height = "56px";
-            ring.style.borderColor = "var(--cyan)";
-          });
-          el.addEventListener("mouseleave", () => {
-            ring.style.width = "36px";
-            ring.style.height = "36px";
-            ring.style.borderColor = "var(--pink)";
-          });
+      /* CURSOR — only on devices with a real mouse and no reduced-motion preference */
+      const canUseCustomCursor =
+        window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (canUseCustomCursor) {
+        const dot = document.getElementById("cursor-dot");
+        const ring = document.getElementById("cursor-ring");
+        let mx = 0,
+          my = 0,
+          rx = 0,
+          ry = 0;
+        document.addEventListener("mousemove", (e) => {
+          mx = e.clientX;
+          my = e.clientY;
         });
+        function animCursor() {
+          dot.style.left = mx + "px";
+          dot.style.top = my + "px";
+          rx += (mx - rx) * 0.12;
+          ry += (my - ry) * 0.12;
+          ring.style.left = rx + "px";
+          ring.style.top = ry + "px";
+          requestAnimationFrame(animCursor);
+        }
+        animCursor();
+        document
+          .querySelectorAll(
+            "a,button,.btn,.chip,.proj-card,.job-card,.contact-item",
+          )
+          .forEach((el) => {
+            el.addEventListener("mouseenter", () => {
+              ring.style.width = "56px";
+              ring.style.height = "56px";
+              ring.style.borderColor = "var(--cyan)";
+            });
+            el.addEventListener("mouseleave", () => {
+              ring.style.width = "36px";
+              ring.style.height = "36px";
+              ring.style.borderColor = "var(--pink)";
+            });
+          });
+      }
 
       /* PARTICLE CANVAS */
       (function () {
@@ -2060,6 +2120,9 @@
           }
         }
         for (let i = 0; i < 90; i++) particles.push(new Particle());
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         function draw() {
           ctx.clearRect(0, 0, W, H);
           // connections
@@ -2082,10 +2145,10 @@
             }
           }
           particles.forEach((p) => {
-            p.update();
+            if (!reduceMotion) p.update();
             p.draw();
           });
-          requestAnimationFrame(draw);
+          if (!reduceMotion) requestAnimationFrame(draw);
         }
         draw();
       })();
